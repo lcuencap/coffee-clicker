@@ -1,0 +1,8 @@
+/target/
+/build/
+/lib/
+/.idea/
+*.iml
+/files/config.json
+/files/credentials.json
+/files/Resources/
