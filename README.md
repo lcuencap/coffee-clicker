@@ -17,3 +17,7 @@ The Java dependencies are Gson, MySQL Connector/J, and JFreeChart, declared in `
 ## Scope and current limitations
 
 This portfolio copy starts with the latest local source, including uncommitted work from the original project, and excludes the original repository history because it contained real configuration and OAuth credential files. The supplied SQL schema excludes sample users and their passwords. The desktop client currently stores account passwords without password hashing and uses string-built SQL queries in its persistence layer; those parts need refactoring and database tests before public presentation. A local Java compilation succeeded; MySQL integration and the graphical flow have not been tested here.
+
+## Academic report
+
+The [team report](report.pdf) contains the original UI mockups, class diagram, and development process. It documents the course submission, including visual resources that are not redistributed in this repository.
