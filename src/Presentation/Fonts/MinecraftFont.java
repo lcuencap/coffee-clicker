@@ -6,45 +6,31 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Custom font class for Minecraft font.
+ * Provides the custom Minecraft-style font used by the original game when available.
+ * Falls back to a standard system font in the curated portfolio copy.
  */
-public class MinecraftFont extends Font {
+public final class MinecraftFont {
+    private static final String FONT_PATH = "/files/Resources/Fonts/Minecraftchmc-dBlX.ttf";
 
-    /**
-     * Constructor to create a MinecraftFont object.
-     */
-    public MinecraftFont() {
-        super("Minecraft", Font.PLAIN, 12);
+    private MinecraftFont() {
     }
 
-    /**
-     * Get the Minecraft font with a default size of 20.
-     *
-     * @return The Minecraft font with a default size of 20.
-     */
     public static Font getFont() {
-        try {
-            Font ret = Font.createFont(Font.TRUETYPE_FONT, new File(System.getProperty("user.dir") + "/files/Resources/Fonts/Minecraftchmc-dBlX.ttf"));
-            return ret.deriveFont(Font.BOLD, 20);
-        } catch (IOException | FontFormatException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return getFontWithSize(20);
     }
 
-    /**
-     * Get the Minecraft font with a custom size.
-     *
-     * @param size The size of the Minecraft font.
-     * @return The Minecraft font with the specified size.
-     */
     public static Font getFontWithSize(int size) {
-        try {
-            Font ret = Font.createFont(Font.TRUETYPE_FONT, new File(System.getProperty("user.dir") + "/files/Resources/Fonts/Minecraftchmc-dBlX.ttf"));
-            return ret.deriveFont(Font.BOLD, size);
-        } catch (IOException | FontFormatException e) {
-            e.printStackTrace();
-            return null;
+        File fontFile = new File(System.getProperty("user.dir") + FONT_PATH);
+
+        if (fontFile.isFile()) {
+            try {
+                Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+                return font.deriveFont(Font.BOLD, (float) size);
+            } catch (IOException | FontFormatException ignored) {
+                // Fall back to a system font below.
+            }
         }
+
+        return new Font(Font.SANS_SERIF, Font.BOLD, size);
     }
 }
