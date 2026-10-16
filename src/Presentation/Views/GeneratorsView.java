@@ -3,7 +3,6 @@ package Presentation.Views;
 import Presentation.Fonts.MinecraftFont;
 
 import javax.swing.*;
-import javax.swing.border.StrokeBorder;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
@@ -13,10 +12,6 @@ import java.awt.event.ActionListener;
  * View class for displaying generators.
  */
 public class GeneratorsView extends JPanel {
-
-    public static final String basicGenDesc = "Aquest generador t'omple de cafeïna i et\npermet estudiar més temps.\n\nRedBull et dóna ales!";
-    public static final String midGenDesc = "Els teus companys són molt bones persones\ni et donen els seus apunts per tal que\npuguis entendre les assignatures.\n\nSpoiler: no ho entendràs igualment.";
-    public static final String highGenDesc = "En vistes de que res funciona i no tens\ntemps per estudiar, has decidit fer un\npacte amb el diable i apuntar-te a la CEUS.\n\nBenvingut a la foscor.";
 
     private final ActionListener actionListener;
     private final ListSelectionListener listSelectionListener;
@@ -103,7 +98,7 @@ public class GeneratorsView extends JPanel {
      * @param amount      The amount of the generator.
      * @param description The description of the generator.
      */
-    public void addGenerator(String picture, String name, String price, String amount, String description) {
+    public void addGenerator(String picture, String name, String price, String amount) {
         JLayeredPane generatorPanel = createGeneratorPanel();
 
         JPanel panel = createInfoPanel(picture, name, price, amount);
@@ -211,29 +206,6 @@ public class GeneratorsView extends JPanel {
 
         buttonPanel.add(button, BorderLayout.CENTER);
         return buttonPanel;
-    }
-
-    /**
-     * Creates a panel containing a description of a generator.
-     *
-     * @param description The description of the generator.
-     * @return The JPanel containing the description.
-     */
-    private JPanel createDescriptionPanel(String description) {
-        JPanel descriptionPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        descriptionPanel.setOpaque(true);
-        descriptionPanel.setSize(300, 100);
-        descriptionPanel.setBackground(Color.darkGray);
-        descriptionPanel.setBorder(new StrokeBorder(new BasicStroke(1.0f), Color.YELLOW));
-
-        JTextArea descriptionLabel = new JTextArea(description);
-        descriptionLabel.setBackground(Color.darkGray);
-        descriptionLabel.setPreferredSize(new Dimension(290, 90));
-        descriptionLabel.setFont(MinecraftFont.getFontWithSize(16));
-        descriptionLabel.setForeground(Color.yellow);
-        descriptionPanel.add(descriptionLabel);
-
-        return descriptionPanel;
     }
 
     /**
