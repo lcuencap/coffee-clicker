@@ -16,7 +16,7 @@ The Java dependencies are Gson, MySQL Connector/J, and JFreeChart, declared in `
 
 ## Scope and current limitations
 
-This portfolio copy starts with the latest local source, including uncommitted work from the original project, and excludes the original repository history because it contained real configuration and OAuth credential files. The supplied SQL schema excludes sample users and their passwords. The desktop client currently stores account passwords without password hashing and uses string-built SQL queries in its persistence layer; those parts need refactoring and database tests before public presentation. A local Java compilation succeeded; MySQL integration and the graphical flow have not been tested here.
+This portfolio copy starts with the latest local source, including uncommitted work from the original project, and excludes the original repository history because it contained real configuration and OAuth credential files. The supplied SQL schema excludes sample users and their passwords. This is an early university project built while learning desktop application architecture and persistence. The persistence layer uses simple string-built SQL and stores account passwords directly, which would not be appropriate for a real deployed application. For this portfolio copy, those choices are kept as part of the original learning context rather than presented as production-ready security practices. A local Java compilation succeeded; MySQL integration and the graphical flow have not been fully re-tested here.
 
 ## Academic report
 
