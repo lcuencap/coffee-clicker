@@ -22,7 +22,7 @@ In the game logic these correspond to the Basic, Mid and High generator tiers re
 4. Copy `files/config.example.json` to `files/config.json` and fill in your local database credentials. The real config is ignored by Git.
 5. From the repository root run `mvn compile exec:java`.
 
-The Java dependencies are Gson, MySQL Connector/J, and JFreeChart, declared in `pom.xml`. The game interface uses visual resources under `files/Resources/`. Those assets are not included in this curated repository yet, so a fresh clone can compile but the complete graphical interface requires the original project resources.
+The Java dependencies are Gson, MySQL Connector/J, and JFreeChart, declared in `pom.xml`. The original game artwork and interface textures are included under `files/Resources/Images/` and `files/Resources/Textures/`. The custom Minecraft-style font used during the course project is optional in this portfolio copy; the application falls back to a system font when it is not present.
 
 ## Scope and current limitations
 
