@@ -96,6 +96,6 @@ public class ProfileView extends JPanel implements MyView {
      */
     @Override
     public void clear() {
-        // This method could be implemented to clear any data or state in the view.
+        // No transient state to clear.
     }
 }
