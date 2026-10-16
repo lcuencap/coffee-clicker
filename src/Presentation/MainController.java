@@ -117,31 +117,36 @@ public class MainController implements ThreadController, GameControllerI, HomeCo
      * Handles the purchase of a generator.
      * @param type the type of generator to purchase.
      */
-    public void buyGenerator(String type) {
-        boolean validPurchase;
-        switch (type) {
-            case "Redbull":
-                type = "Basic";
-                break;
-            case "Notes":
-                type = "Mid";
-                break;
-            case "CEUS":
-                type = "High";
-                break;
-        }
+    public void buyGenerator(String displayName) {
+        String generatorType = switch (displayName) {
+            case "Redbull" -> "Basic";
+            case "Notes" -> "Mid";
+            case "CEUS" -> "High";
+            default -> displayName;
+        };
+
         try {
-            validPurchase = gameManager.buyGenerator(type);
-            if (validPurchase) {
-                gameView.updateCurrency(gameManager.getGameCurrency());
-                gameView.updateTable(generatorManager.getAllNumberOfGenerators(gameManager.getGameId()), generatorManager.getAllProductionPerSec(gameManager.getGameId()), generatorManager.getAllProductionPercentage(gameManager.getGameId()), generatorManager.getShopPrices(gameManager.getGameId()), generatorManager.getImprovementLevels(gameManager.getGameId()));
-            } else {
-                //Mostra missatge de que no es te suficient diners per comprar;
+            if (!gameManager.buyGenerator(generatorType)) {
                 storesView.noEnoughMoney(gameManager.getGameCurrency());
+                return;
             }
-        } catch (BusinessException e) {
-            //Printeja el missatge d'error on toqui.
+
+            refreshGameView();
+        } catch (BusinessException ignored) {
+            // The original UI does not expose a dedicated error state for failed purchases.
         }
+    }
+
+    private void refreshGameView() throws BusinessException {
+        int gameId = gameManager.getGameId();
+        gameView.updateCurrency(gameManager.getGameCurrency());
+        gameView.updateTable(
+                generatorManager.getAllNumberOfGenerators(gameId),
+                generatorManager.getAllProductionPerSec(gameId),
+                generatorManager.getAllProductionPercentage(gameId),
+                generatorManager.getShopPrices(gameId),
+                generatorManager.getImprovementLevels(gameId)
+        );
     }
 
 
@@ -149,7 +154,7 @@ public class MainController implements ThreadController, GameControllerI, HomeCo
      * Retrieves the email ID of the current user.
      * @return the email ID of the current user.
      */
-    public String getEmail_id() {
+    public String getCurrentUserEmail() {
         return userManager.getCurrentUser().getEmail();
     }
 
@@ -281,10 +286,10 @@ public class MainController implements ThreadController, GameControllerI, HomeCo
      * @param databaseError the database error message to display.
      * @param what the type of action (registration or login).
      */
-    public void adviceMessage (String error, String databaseError, String what){
-        if (what.equals("login")) {
+    public void adviceMessage(String error, String databaseError, String form) {
+        if ("login".equals(form)) {
             loginView.adviceMessage(error, databaseError);
-        } else {
+        } else if ("register".equals(form)) {
             registerView.adviceMessage(error, databaseError);
         }
     }
@@ -461,7 +466,7 @@ public class MainController implements ThreadController, GameControllerI, HomeCo
      */
     @Override
     public void swapStore(String panelName) {
-        ((StoresView)views.get("stores")).swapPanel(panelName);
+        storesView.swapPanel(panelName);
     }
 
     /**
