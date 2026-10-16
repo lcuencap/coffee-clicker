@@ -12,7 +12,7 @@ This is shared team work. Everyone on the team had to understand and defend the 
 4. Copy `files/config.example.json` to `files/config.json` and fill in your local database credentials. The real config is ignored by Git.
 5. From the repository root run `mvn compile exec:java`.
 
-The Java dependencies are Gson, MySQL Connector/J, and JFreeChart, declared in `pom.xml`. The original project loaded visual resources from `files/Resources/`; these files remain local for now because their authorship and redistribution rights have not been established. A fresh clone can compile, but the game interface needs replacement artwork before this repository is suitable for a public release.
+The Java dependencies are Gson, MySQL Connector/J, and JFreeChart, declared in `pom.xml`. The game interface uses visual resources under `files/Resources/`. Those assets are not included in this curated repository yet, so a fresh clone can compile but the complete graphical interface requires the original project resources.
 
 ## Scope and current limitations
 
@@ -20,4 +20,4 @@ This portfolio copy starts with the latest local source, including uncommitted w
 
 ## Academic report
 
-The [team report](report.pdf) contains the original UI mockups, class diagram, and development process. It documents the course submission, including visual resources that are not redistributed in this repository.
+The [team report](report.pdf) contains the original UI mockups, class diagram, and development process.
