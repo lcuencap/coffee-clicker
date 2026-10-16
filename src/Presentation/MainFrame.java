@@ -3,10 +3,7 @@ package Presentation;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * The MainFrame class is a JFrame that uses a CardLayout to switch between different panels.
- * It sets up the main frame of the application, including the card layout for panel switching.
- */
+/** Main application frame using CardLayout for view navigation. */
 public class MainFrame extends JFrame {
 
     private final JPanel cardPanel;
