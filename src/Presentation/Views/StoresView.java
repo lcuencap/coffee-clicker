@@ -100,13 +100,13 @@ public class StoresView extends JPanel implements MyView {
             int lvlHighImp
     ) {
         generatorsView.removeGenerators();
-        generatorsView.addGenerator(R.REDBULL, "Redbull", "100", String.valueOf(basicGenerator), GeneratorsView.basicGenDesc);
-        generatorsView.addGenerator(R.ENCHANTED_BOOK, "Notes", "200", String.valueOf(midGenerator), GeneratorsView.midGenDesc);
-        generatorsView.addGenerator(R.CEUS, "CEUS", "300", String.valueOf(highGenerator), GeneratorsView.highGenDesc);
+        generatorsView.addGenerator(R.REDBULL, "Redbull", "100", String.valueOf(basicGenerator));
+        generatorsView.addGenerator(R.ENCHANTED_BOOK, "Notes", "200", String.valueOf(midGenerator));
+        generatorsView.addGenerator(R.CEUS, "CEUS", "300", String.valueOf(highGenerator));
 
-        improvementsView.addImprovement(R.PILLS, "Pills", "100", String.valueOf(lvlBasicImp), ImprovementsView.basicImprovementDesc);
-        improvementsView.addImprovement(R.GLASSES, "Glasses", "200", String.valueOf(lvlMidImp), ImprovementsView.midImprovementDesc);
-        improvementsView.addImprovement(R.CARLOS, "Carlos", "300", String.valueOf(lvlHighImp), ImprovementsView.highImprovementDesc);
+        improvementsView.addImprovement(R.PILLS, "Pills", "100", String.valueOf(lvlBasicImp));
+        improvementsView.addImprovement(R.GLASSES, "Glasses", "200", String.valueOf(lvlMidImp));
+        improvementsView.addImprovement(R.CARLOS, "Carlos", "300", String.valueOf(lvlHighImp));
     }
 
     @Override
