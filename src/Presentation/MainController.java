@@ -38,8 +38,6 @@ public class MainController implements ThreadController, GameControllerI, HomeCo
     private HomeView homeView;
     private GameView gameView;
     private StatisticsView statisticsView;
-    private GeneratorsView generatorsView;
-    private ImprovementsView improvementsView;
 
 
     public MainController(GeneratorManager generatorManager, UserManager userManager) throws IOException {
@@ -137,7 +135,6 @@ public class MainController implements ThreadController, GameControllerI, HomeCo
             if (validPurchase) {
                 gameView.updateCurrency(gameManager.getGameCurrency());
                 gameView.updateTable(generatorManager.getAllNumberOfGenerators(gameManager.getGameId()), generatorManager.getAllProductionPerSec(gameManager.getGameId()), generatorManager.getAllProductionPercentage(gameManager.getGameId()), generatorManager.getShopPrices(gameManager.getGameId()), generatorManager.getImprovementLevels(gameManager.getGameId()));
-                updateStoresGeneratorsView();
             } else {
                 //Mostra missatge de que no es te suficient diners per comprar;
                 storesView.noEnoughMoney(gameManager.getGameCurrency());
@@ -410,19 +407,6 @@ public class MainController implements ThreadController, GameControllerI, HomeCo
         gameView.updateTable(generatorManager.getAllNumberOfGenerators(gameManager.getGameId()), generatorManager.getAllProductionPerSec(gameManager.getGameId()), generatorManager.getAllProductionPercentage(gameManager.getGameId()), generatorManager.getShopPrices(gameManager.getGameId()), generatorManager.getImprovementLevels(gameManager.getGameId()));
         gameManager.setRunningGame(true);
         gameManager.start();
-    }
-
-    /**
-     * Updates the view of the store and generators.
-     */
-    public void updateStoresGeneratorsView() {
-        /*try {
-            //Pillar info dels generadors per passar.
-            int auxGameId = gameManager.getGameId();
-            //storesView.updateGeneratorsView(generatorManager.getShopPrices(auxGameId), generatorManager.getNumGeneratorsInShop(auxGameId));
-        } catch (BusinessException e) {
-            //Printejar el missatge d'error
-        }*/
     }
 
     /**
