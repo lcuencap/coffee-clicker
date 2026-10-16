@@ -3,7 +3,6 @@ package Presentation.Views;
 import Presentation.Fonts.MinecraftFont;
 
 import javax.swing.*;
-import javax.swing.border.StrokeBorder;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
@@ -14,9 +13,6 @@ import java.awt.event.ActionListener;
  */
 public class ImprovementsView extends JPanel {
 
-    public static final String basicImprovementDesc = "Aquestes pastilles combinades amb el teu RedBull\nson una bomba d'hiperactivitat que et permet\nestudiar a nivells inimaginables.\n\nNo et preocupis, no et faran mal.";
-    public static final String midImprovementDesc = "Tantes hores llegint fan mal.\nMillor posa't unes ulleres que els oculistes\nsón cars!";
-    public static final String highImprovementDesc = "Que cols que t'hi digui, si no fós \nper aquest home, molta gent suspendria Mates.";
     private final ActionListener actionListener;
     private JScrollPane scrollPane;
     private JPanel mainPanel;
@@ -108,7 +104,7 @@ public class ImprovementsView extends JPanel {
      * @param amount      The amount of the improvement.
      * @param description The description of the improvement.
      */
-    public void addImprovement(String picture, String name, String price, String amount, String description) {
+    public void addImprovement(String picture, String name, String price, String amount) {
         JLayeredPane improvementPanel = createImprovementPanel();
 
         JPanel panel = createInfoPanel(picture, name, price, amount);
@@ -216,29 +212,6 @@ public class ImprovementsView extends JPanel {
 
         buttonPanel.add(button, BorderLayout.CENTER);
         return buttonPanel;
-    }
-
-    /**
-     * Creates a panel for displaying a description with the specified text.
-     *
-     * @param description The description text.
-     * @return The created description panel.
-     */
-    private JPanel createDescriptionPanel(String description) {
-        JPanel descriptionPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        descriptionPanel.setOpaque(true);
-        descriptionPanel.setSize(300, 100);
-        descriptionPanel.setBackground(Color.darkGray);
-        descriptionPanel.setBorder(new StrokeBorder(new BasicStroke(1.0f), Color.YELLOW));
-
-        JTextArea descriptionLabel = new JTextArea(description);
-        descriptionLabel.setBackground(Color.darkGray);
-        descriptionLabel.setPreferredSize(new Dimension(290, 90));
-        descriptionLabel.setFont(MinecraftFont.getFontWithSize(16));
-        descriptionLabel.setForeground(Color.yellow);
-        descriptionPanel.add(descriptionLabel);
-
-        return descriptionPanel;
     }
 
     /**
