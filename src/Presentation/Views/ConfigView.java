@@ -97,5 +97,6 @@ public class ConfigView extends JPanel implements MyView {
      */
     @Override
     public void clear() {
+        // No transient state to clear.
     }
 }
