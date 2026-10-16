@@ -4,6 +4,16 @@ A Java 21 Swing game created as a university group project. Players click to ear
 
 This is shared team work. Everyone on the team had to understand and defend the complete application; no individual module attribution is claimed here.
 
+## Game theme
+
+Coffee Clicker is themed around **student life and studying**. The generators are deliberately based on things a student might use to keep studying or make studying easier:
+
+- **Redbull** represents the basic energy boost: more energy and concentration to keep studying.
+- **Notes** represent classmates' notes and study material that help you understand the subjects more efficiently.
+- **CEUS** represents a well-known tutoring academy focused on students from **La Salle**, the university where the project was developed.
+
+In the game logic these correspond to the Basic, Mid and High generator tiers respectively. The names are part of the original university-project theme rather than generic resource-generator labels.
+
 ## Run locally
 
 1. Install JDK 21, Maven, and MySQL.
