@@ -227,30 +227,16 @@ public class MainController implements ThreadController, GameControllerI, HomeCo
      * Displays a message to prompt the user to enter valid information during registration.
      * @param what the type of information that needs to be valid.
      */
-    public void registerEnterValid (String what){
-
-        if (what.equals("username")) {
-            registerView.enterValidUsername();
-        } else {
-            if (what.equals("email")) {
-                registerView.enterValidEmail();
-            } else {
-                if (what.equals("lengthPassword")) {
-                    registerView.enterValidPassword8C();
-                } else {
-                    if (what.equals("lowerCasePassword")) {
-                        registerView.enterValidPasswordLowerCase();
-                    } else {
-                        if (what.equals("upperCasePassword")) {
-                            registerView.enterValidPasswordUpperCase();
-                        } else {
-                            if (what.equals("minOneNumber")) {
-                                registerView.enterValidPasswordOneNumber();
-                            }
-
-                        }
-                    }
-                }
+    public void registerEnterValid(String what) {
+        switch (what) {
+            case "username" -> registerView.enterValidUsername();
+            case "email" -> registerView.enterValidEmail();
+            case "lengthPassword" -> registerView.enterValidPassword8C();
+            case "lowerCasePassword" -> registerView.enterValidPasswordLowerCase();
+            case "upperCasePassword" -> registerView.enterValidPasswordUpperCase();
+            case "minOneNumber" -> registerView.enterValidPasswordOneNumber();
+            default -> {
+                // Unknown validation key: nothing to display.
             }
         }
     }
@@ -259,10 +245,10 @@ public class MainController implements ThreadController, GameControllerI, HomeCo
      * Displays a message to prompt the user to enter valid information during login.
      * @param what the type of information that needs to be valid.
      */
-    public void loginEnterValid (String what){
-        if (what.equals("email")) {
+    public void loginEnterValid(String what) {
+        if ("email".equals(what)) {
             loginView.enterValidEmail();
-        } else {
+        } else if ("password".equals(what)) {
             loginView.enterValidPassword();
         }
     }
@@ -279,14 +265,13 @@ public class MainController implements ThreadController, GameControllerI, HomeCo
      * Clears the form based on the specified type.
      * @param what the type of form to clear.
      */
-    public void clearForm (String what){
+    public void clearForm(String what) {
         switch (what) {
-            case "login":
-                loginView.clearForm();
-                break;
-            case "register":
-                registerView.clearForm();
-                break;
+            case "login" -> loginView.clearForm();
+            case "register" -> registerView.clearForm();
+            default -> {
+                // Unknown form key: nothing to clear.
+            }
         }
     }
 
@@ -325,8 +310,7 @@ public class MainController implements ThreadController, GameControllerI, HomeCo
     /**
      * Toggles the store view.
      */
-    public void toggleStore () {
-        updateStoresGeneratorsView();
+    public void toggleStore() {
         gameView.toggleStore();
     }
 
